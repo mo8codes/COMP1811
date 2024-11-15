@@ -30,7 +30,7 @@ class Leaf(Person):
 
 
 
-    class Family:
+    class Family(Person):
         def __init__(self):
             self.members = {}  # Dictionary to store members by their UID
 
@@ -103,4 +103,5 @@ class Leaf(Person):
                         grandchildren_names = ", ".join(self.get_member(gc_uid).name for gc_uid in member.grandchildren)
                         print(f"  Grandchildren: {grandchildren_names}")
                 print()
+
 
