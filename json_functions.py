@@ -8,7 +8,9 @@ def create_objects_from_json(objects_db):
         print(person) #Person is a dictionary for example: {'uid': 1, "type": Leaf, 'name': 'John Doe', 'is_male': True, 'is_alive': True, 'date_of_birth': '15-03-1985', 'date_of_death': None, 'spouse': 2, 'parents': {'father': 3, 'mother': 4}}
         #Create the objects from the JSON
         if person["type"] == "Leaf":
-            pass#Leaf()
+            Leaf(
+
+            )
         if person["type"] == "Parent":
             pass#Parent()
     pass
