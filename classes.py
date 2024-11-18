@@ -15,6 +15,7 @@ class Person:
         self.parents = parents # Dictionary of their UID
 
     def get_spouse(self): #Mo
+        # For use in other functions
         pass
 
     def get_parents(self): #Mo
