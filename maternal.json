@@ -1,6 +1,5 @@
-[
-  {
-    "uid": 1,
+{
+  "uid": 1,
     "type": "Leaf",
     "name": "John Doe",
     "is_male": true,
@@ -10,7 +9,144 @@
     "spouse": 2,
     "parents": {
       "father": 3,
-      "mother": 4
+      "mother": 4,
+      "betty_family": {
+        "uid": 1,
+        "type": "Parent"
+        "name": "Michael Betty",
+        "is_male": true,
+        "is_alive": true,
+        "date_of_birth": "29-01-1939",
+        "gender": "Male",
+        "date_of_death": null,
+        "spouse": 2
+      }
+    }
+
+      "name": "Sandy Singh Betty",
+      "birth_date": "29/01/1930",
+      "gender": "Female",
+      "death_date": null,
+      "previous_spouse": {
+          "uid": "03",
+        "name": "Carl Gah",
+        "birth_date": "29/01/1924",
+        "gender": "Male",
+        "death_date": "01/04/2020"
+      },
+      "children": [
+        {
+          "uid": "04",
+          "name": "Carlie Gah Mattison",
+          "birth_date": "06/11/1950",
+          "gender": "Female",
+          "death_date": null,
+          "spouse": {
+            "uid": "05",
+            "name": "Henry Mattison",
+            "birth_date": "18/03/1945",
+            "gender": "Male"
+          },
+          "children": [
+            {
+              "uid": "06",
+              "name": "Justin Mattison",
+              "birth_date": "04/10/2000",
+              "gender": "Male",
+              "death_date": null
+            },
+            {
+              "name": "Jeonna Mattison",
+              "birth_date": "04/10/2000",
+              "gender": "Female",
+              "death_date": null
+            }
+          ]
+        }
+      ]
+    },
+    "children": [
+      {
+        "name": "Cornelia Betty Emmershon",
+        "birth_date": "07/26/1980",
+        "spouse": {
+          "name": "Otto Emmershon",
+          "birth_date": "07/26/1975",
+          "gender": "Male",
+          "death_date": null
+        },
+        "children": [
+          {
+            "name": "Joseph Emmershon",
+            "birth_date": "01/04/2002",
+            "gender": "Male",
+            "death_date": null,
+            "spouse": {
+              "name": "Kathy Bush",
+              "birth_date": "05/10/2003",
+              "gender": "Female",
+              "death_date": null
+            },
+            "children": [
+              {
+                "name": "Sadie Emmershon",
+                "birth_date": "02/02/2023",
+                "gender": "Female",
+                "death_date": null
+              }
+            ]
+          },
+          {
+            "name": "Alaina Emmershon",
+            "birth_date": "05/16/2006",
+            "gender": "Female",
+            "death_date": null
+          }
+        ]
+      },
+      {
+        "name": "Onarie Betty",
+        "birth_date": "11/24/1986",
+        "gender": "Male",
+        "previous_spouse": {
+          "name": "Spouse unknown",
+          "birth_date": null,
+          "occupation": null,
+          "gender": "Female"
+        },
+        "current_spouse": {
+          "name": "Caithlyn Sahr Betty",
+          "birth_date": "05/16/1985",
+          "gender": "Female",
+          "death_date": null
+        },
+        "children": [
+          {
+            "name": "Kevin Betty",
+            "birth_date": "05/12/2014",
+            "occupation": null,
+            "gender": "Male",
+            "death_date": "08/10/2024"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+[
+  {
+    "uid": 1,
+    "type": "Parent",
+    "name": "Michael Betty",
+    "is_male": true,
+    "is_alive": true,
+    "date_of_birth": "29-01-1939",
+    "date_of_death": null,
+    "spouse": 2,
+    "parents": {
+      "father":
+      "mother":
     }
   },
   {

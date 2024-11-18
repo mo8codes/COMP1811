@@ -1,16 +1,16 @@
 [
   {
     "uid": 1,
-    "type": "Leaf",
-    "name": "John Doe",
+    "type": "Parent",
+    "name": "Michael Betty",
     "is_male": true,
     "is_alive": true,
-    "date_of_birth": "15-10-1985",
+    "date_of_birth": "29-01-1939",
     "date_of_death": null,
     "spouse": 2,
     "parents": {
-      "father": 3,
-      "mother": 4
+      "father":
+      "mother":
     }
   },
   {

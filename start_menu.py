@@ -18,5 +18,12 @@ def start_menu():
     print("|| To display cousins of a member: Enter 7                                                        ||")
     print("||                                                                                                ||")
     print("|| To display birthdays of a member: Enter 8                                                      ||")
+    print("||                                                                                                ||")
+    print("|| To display birthdays of members of the entire Emmershon family: Enter 9                        ||")
 
-#I will finish this and add the calcs but this is the layout
+user_input = input("Select any of the following options above")
+if user_input =
+
+elif user_input =
+    print("The key entered is invalid. Please try again!")
+    break
