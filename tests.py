@@ -1,4 +1,7 @@
 import unittest
+from sndhdr import tests
+
+
 # Feature 3aii
 
 class MyTestCase(unittest.TestCase):
@@ -7,4 +10,4 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main() # Runs all tests
