@@ -1,7 +1,14 @@
 from json_functions import read_json
 from start_menu import start_menu
-from object_management import merge_objects
 
+# Allows creation of people list containing the objects for every single person
+def merge_objects(paternal_objects, maternal_objects):
+    people = []
+    for person in paternal_objects:
+        people.append(person)
+    for person in maternal_objects:
+        people.append(person)
+    return people
 
 def main():
     paternal_objects = read_json("paternal.json")
