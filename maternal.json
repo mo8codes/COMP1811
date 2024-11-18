@@ -1,0 +1,30 @@
+[
+  {
+    "uid": 1,
+    "type": "Leaf",
+    "name": "John Doe",
+    "is_male": true,
+    "is_alive": true,
+    "date_of_birth": "15-10-1985",
+    "date_of_death": null,
+    "spouse": 2,
+    "parents": {
+      "father": 3,
+      "mother": 4
+    }
+  },
+  {
+    "uid": 2,
+    "type": "Leaf",
+    "name": "Mary Doe",
+    "is_male": false,
+    "is_alive": true,
+    "date_of_birth": "29-03-1986",
+    "date_of_death": null,
+    "spouse": 2,
+    "parents": {
+      "father": 5,
+      "mother": 6
+    }
+  }
+]
