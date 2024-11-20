@@ -1,18 +1,20 @@
 from datetime import datetime
 
+from json_functions import read_json
+
 
 class Person:
-    def __init__(self, uid, type_of, name, previous_spouses, is_male, is_alive, date_of_birth, date_of_death, spouse, parents):
+    def __init__(self, uid, name, is_male, is_alive, date_of_birth, date_of_death, mother, father, spouse, previous_spouses):
         self.uid = uid # Integer
-        self.type_of = type_of # String parent or Leaf
         self.name = name # String
-        self.previous_spouses = previous_spouses
         self.is_male = is_male # Boolean
         self.is_alive = is_alive # Boolean
         self.date_of_birth = datetime.strptime(date_of_birth, "%d-%m-%Y") # ? String ?
         self.date_of_death = datetime.strptime(date_of_death, "%d-%m-%Y") # ? String ?
+        self.mother = mother
+        self.father = father
         self.spouse = spouse # Object or None (Leaves and Parents can have a spouse)
-        self.parents = parents # Dictionary of their UID
+        self.previous_spouses = previous_spouses
 
     def get_spouse(self): #Mo
         # For use in other functions
@@ -22,8 +24,7 @@ class Person:
         # (Feature 1ai)
         pass
 
-    def get_siblings(self):
-        # (Feature 2ai)
+    def get_siblings(self, uid):
         pass
 
     def get_cousins(self):
@@ -38,6 +39,15 @@ class Person:
         # (Feature 2bii)
         pass
 
+class Registry():
+    def __init__(self):
+        self.people = {}
+
+    def populate(self, json_file):
+        json_data = read_json(json_file)
+
+    def get_person_by_id(self, uid):
+        return self.people[uid]
 
 class Parent(Person):
     def __init__(self, uid, type_of, name, is_male, is_alive, date_of_birth, date_of_death, spouse, previous_spouses, parents, children,
@@ -66,8 +76,8 @@ class Leaf(Person):
 class Root(Person):
     pass
 
-
 class FamilyTree:
+
     def get_immediate_family(self):  # Mo
         # (Feature 1bi)
         pass

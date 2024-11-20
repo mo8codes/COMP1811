@@ -5,27 +5,30 @@
     "name": "Michael Betty",
     "is_male": true,
     "is_alive": true,
-    "date_of_birth": "29/01/1939",
+    "date_of_birth": "29-01-1939",
     "date_of_death": null,
     "previous_spouse": null,
+    "parents": null,
     "spouse": {
       "uid": 2,
       "type": "Parent",
       "name": "Sandy Betty",
       "is_male": false,
       "is_alive": true,
-      "date_of_birth": "19/06/1930",
+      "date_of_birth": "19-06-1930",
       "date_of_death": null,
+      "parents": null,
       "previous_spouse": {
         "uid": 3,
         "type": "Parent",
         "name": "Carl Gah",
         "is_male": true,
         "is_alive": false,
-        "date_of_birth": "29/01/1924",
-        "date_of_death": "11/11/2023",
+        "date_of_birth": "29-01-1924",
+        "date_of_death": "11-11-2023",
         "previous_spouse": null,
-        "spouse": null
+        "spouse": null,
+        "parents": null
       },
       "children": [
         {
@@ -34,18 +37,20 @@
           "name": "Adrina Gah Mattison",
           "is_male": false,
           "is_alive": true,
-          "date_of_birth": "06/11/1950",
+          "date_of_birth": "06-11-1950",
           "date_of_death": null,
           "previous_spouse": null,
+          "parents": [2, 3],
           "spouse": {
             "uid": 5,
             "type": "Parent",
             "name": "Henry Mattison",
             "is_male": true,
             "is_alive": true,
-            "date_of_birth": "18/03/1945",
+            "date_of_birth": "18-03-1945",
             "date_of_death": null,
             "previous_spouse": null,
+            "parents": null,
             "spouse": 4
           },
           "children": [
@@ -55,10 +60,11 @@
               "name": "Justin Mattison",
               "is_male": true,
               "is_alive": true,
-              "date_of_birth": "04/10/2000",
+              "date_of_birth": "04-10-2000",
               "date_of_death": null,
               "previous_spouse": null,
-              "spouse": null
+              "spouse": null,
+              "parents": [4, 5]
             },
             {
               "uid": 7,
@@ -66,10 +72,11 @@
               "name": "Jeonna Mattison",
               "is_male": false,
               "is_alive": true,
-              "date_of_birth": "04/10/2000",
+              "date_of_birth": "04-10-2000",
               "date_of_death": null,
               "previous_spouse": null,
-              "spouse": null
+              "spouse": null,
+              "parents": [4, 5]
             }
           ]
         }
@@ -82,19 +89,21 @@
         "name": "Cornelia Betty Emmershon",
         "is_male": false,
         "is_alive": true,
-        "date_of_birth": "26/07/1980",
+        "date_of_birth": "26-07-1980",
         "date_of_death": null,
         "previous_spouse": null,
+        "parents": [1, 2],
         "spouse": {
           "uid": 9,
           "type": "Parent",
           "name": "Otto Emmershon",
           "is_male": true,
           "is_alive": true,
-          "date_of_birth": "26/07/1975",
+          "date_of_birth": "26-07-1975",
           "date_of_death": null,
           "previous_spouse": null,
-          "spouse": 8
+          "spouse": 8,
+          "parents": null
         },
         "children": [
           {
@@ -103,18 +112,20 @@
             "name": "Joseph Emmershon",
             "is_male": true,
             "is_alive": true,
-            "date_of_birth": "04/01/2000",
+            "date_of_birth": "04-01-2000",
             "date_of_death": null,
             "previous_spouse": null,
+            "parents": [8, 9],
             "spouse": {
               "uid": 11,
               "type": "Parent",
               "name": "Kathy Bush",
               "is_male": false,
               "is_alive": true,
-              "date_of_birth": "10/05/2003",
+              "date_of_birth": "10-05-2003",
               "date_of_death": null,
               "previous_spouse": null,
+              "parents": null,
               "spouse": 10
             },
             "children": [
@@ -124,10 +135,11 @@
                 "name": "Sadie Emmershon",
                 "is_male": false,
                 "is_alive": true,
-                "date_of_birth": "02/02/2023",
+                "date_of_birth": "02-02-2023",
                 "date_of_death": null,
                 "previous_spouse": null,
-                "spouse": null
+                "spouse": null,
+                "parents": [10, 11]
               }
             ]
           },
@@ -137,10 +149,11 @@
             "name": "Alaina Emmershon",
             "is_male": false,
             "is_alive": true,
-            "date_of_birth": "16/05/2006",
+            "date_of_birth": "16-05-2006",
             "date_of_death": null,
             "previous_spouse": null,
-            "spouse": null
+            "spouse": null,
+            "parents": [8, 9]
           }
         ]
       },
@@ -150,52 +163,46 @@
         "name": "Onarie Betty",
         "is_male": false,
         "is_alive": true,
-        "date_of_birth": "24/11/1996",
+        "date_of_birth": "24-11-1996",
         "date_of_death": null,
-        "previous_spouse": {
-          "uid": 15,
-          "type": "Parent",
-          "name": "Spouse Name Unknown",
-          "is_male": true,
-          "is_alive": true,
-          "date_of_birth": null,
-          "date_of_death": null,
-          "previous_spouse": null,
-          "spouse": null
-        },
+        "parents": [1, 2],
+        "previous_spouse": null,
         "spouse": {
-          "uid": 16,
+          "uid": 15,
           "type": "Parent",
           "name": "Caithlyn Sahr Betty",
           "is_male": false,
           "is_alive": true,
-          "date_of_birth": "16/05/1985",
+          "date_of_birth": "16-05-1985",
           "date_of_death": null,
           "previous_spouse": null,
+          "parents": null,
           "spouse": 14
         },
         "children": [
           {
-            "uid": 17,
+            "uid": 16,
             "type": "Leaf",
             "name": "Kevin Betty",
             "is_male": true,
-            "is_alive": true,
-            "date_of_birth": "16/10/2014",
+            "is_alive": false,
+            "date_of_birth": "16-10-2014",
             "date_of_death": "02-02-2016",
             "previous_spouse": null,
-            "spouse": null
+            "spouse": null,
+            "parents": [14, 15]
           },
           {
-            "uid": 18,
+            "uid": 17,
             "type": "Leaf",
             "name": "Alaina Betty",
             "is_male": false,
             "is_alive": true,
-            "date_of_birth": "08/01/2006",
+            "date_of_birth": "08-01-2006",
             "date_of_death": null,
             "previous_spouse": null,
-            "spouse": null
+            "spouse": null,
+            "parents": [14, 15]
           }
         ]
       }
