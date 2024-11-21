@@ -1,5 +1,5 @@
 
-# Python Coursework 1
+# Python Coursework - Family Tree
 
 This project is a command-line tool for managing a family tree.
 
@@ -31,3 +31,15 @@ Person
      | ...
      
 ```
+
+### List Syblings
+TBD.
+
+### List Cousins
+TBD.
+
+### List Extended Faimly
+TBD.
+
+### More Stuff
+TBD.

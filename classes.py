@@ -33,21 +33,13 @@ class Person:
 
     def get_all_birthdays(self):
         # (Feature 2bi)
+        #test
         pass
 
     def print_birthday_calendar(self):
         # (Feature 2bii)
         pass
 
-class Registry():
-    def __init__(self):
-        self.people = {}
-
-    def populate(self, json_file):
-        json_data = read_json(json_file)
-
-    def get_person_by_id(self, uid):
-        return self.people[uid]
 
 class Parent(Person):
     def __init__(self, uid, type_of, name, is_male, is_alive, date_of_birth, date_of_death, spouse, previous_spouses, parents, children,
