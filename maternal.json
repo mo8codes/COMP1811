@@ -8,7 +8,8 @@
     "date_of_birth": "29-01-1939",
     "date_of_death": null,
     "previous_spouse": null,
-    "parents": null,
+    "mother": null,
+    "father": null,
     "spouse": {
       "uid": 2,
       "type": "Parent",
@@ -17,7 +18,8 @@
       "is_alive": true,
       "date_of_birth": "19-06-1930",
       "date_of_death": null,
-      "parents": null,
+      "mother": null,
+      "father": null,
       "previous_spouse": {
         "uid": 3,
         "type": "Parent",
