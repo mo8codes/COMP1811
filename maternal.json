@@ -1,141 +1,5 @@
 {
-  "uid": 1,
-    "type": "Leaf",
-    "name": "John Doe",
-    "is_male": true,
-    "is_alive": true,
-    "date_of_birth": "15-10-1985",
-    "date_of_death": null,
-    "spouse": 2,
-    "parents": {
-      "father": 3,
-      "mother": 4,
-      "betty_family": {
-        "uid": 1,
-        "type": "Parent"
-        "name": "Michael Betty",
-        "is_male": true,
-        "is_alive": true,
-        "date_of_birth": "29-01-1939",
-        "gender": "Male",
-        "date_of_death": null,
-        "spouse": 2
-      }
-    }
-
-      "name": "Sandy Singh Betty",
-      "birth_date": "29/01/1930",
-      "gender": "Female",
-      "death_date": null,
-      "previous_spouse": {
-          "uid": "03",
-        "name": "Carl Gah",
-        "birth_date": "29/01/1924",
-        "gender": "Male",
-        "death_date": "01/04/2020"
-      },
-      "children": [
-        {
-          "uid": "04",
-          "name": "Carlie Gah Mattison",
-          "birth_date": "06/11/1950",
-          "gender": "Female",
-          "death_date": null,
-          "spouse": {
-            "uid": "05",
-            "name": "Henry Mattison",
-            "birth_date": "18/03/1945",
-            "gender": "Male"
-          },
-          "children": [
-            {
-              "uid": "06",
-              "name": "Justin Mattison",
-              "birth_date": "04/10/2000",
-              "gender": "Male",
-              "death_date": null
-            },
-            {
-              "name": "Jeonna Mattison",
-              "birth_date": "04/10/2000",
-              "gender": "Female",
-              "death_date": null
-            }
-          ]
-        }
-      ]
-    },
-    "children": [
-      {
-        "name": "Cornelia Betty Emmershon",
-        "birth_date": "07/26/1980",
-        "spouse": {
-          "name": "Otto Emmershon",
-          "birth_date": "07/26/1975",
-          "gender": "Male",
-          "death_date": null
-        },
-        "children": [
-          {
-            "name": "Joseph Emmershon",
-            "birth_date": "01/04/2002",
-            "gender": "Male",
-            "death_date": null,
-            "spouse": {
-              "name": "Kathy Bush",
-              "birth_date": "05/10/2003",
-              "gender": "Female",
-              "death_date": null
-            },
-            "children": [
-              {
-                "name": "Sadie Emmershon",
-                "birth_date": "02/02/2023",
-                "gender": "Female",
-                "death_date": null
-              }
-            ]
-          },
-          {
-            "name": "Alaina Emmershon",
-            "birth_date": "05/16/2006",
-            "gender": "Female",
-            "death_date": null
-          }
-        ]
-      },
-      {
-        "name": "Onarie Betty",
-        "birth_date": "11/24/1986",
-        "gender": "Male",
-        "previous_spouse": {
-          "name": "Spouse unknown",
-          "birth_date": null,
-          "occupation": null,
-          "gender": "Female"
-        },
-        "current_spouse": {
-          "name": "Caithlyn Sahr Betty",
-          "birth_date": "05/16/1985",
-          "gender": "Female",
-          "death_date": null
-        },
-        "children": [
-          {
-            "name": "Kevin Betty",
-            "birth_date": "05/12/2014",
-            "occupation": null,
-            "gender": "Male",
-            "death_date": "08/10/2024"
-          }
-        ]
-      }
-    ]
-  }
-}
-
-[
-  {
+  "betty_family": {
     "uid": 1,
     "type": "Parent",
     "name": "Michael Betty",
@@ -143,24 +7,205 @@
     "is_alive": true,
     "date_of_birth": "29-01-1939",
     "date_of_death": null,
-    "spouse": 2,
-    "parents": {
-      "father":
-      "mother":
-    }
-  },
-  {
-    "uid": 2,
-    "type": "Leaf",
-    "name": "Mary Doe",
-    "is_male": false,
-    "is_alive": true,
-    "date_of_birth": "29-03-1986",
-    "date_of_death": null,
-    "spouse": 2,
-    "parents": {
-      "father": 5,
-      "mother": 6
-    }
+    "previous_spouse": null,
+    "parents": null,
+    "spouse": {
+      "uid": 2,
+      "type": "Parent",
+      "name": "Sandy Betty",
+      "is_male": false,
+      "is_alive": true,
+      "date_of_birth": "19-06-1930",
+      "date_of_death": null,
+      "parents": null,
+      "previous_spouse": {
+        "uid": 3,
+        "type": "Parent",
+        "name": "Carl Gah",
+        "is_male": true,
+        "is_alive": false,
+        "date_of_birth": "29-01-1924",
+        "date_of_death": "11-11-2023",
+        "previous_spouse": null,
+        "spouse": null,
+        "parents": null
+      },
+      "children": [
+        {
+          "uid": 4,
+          "type": "Parent",
+          "name": "Adrina Gah Mattison",
+          "is_male": false,
+          "is_alive": true,
+          "date_of_birth": "06-11-1950",
+          "date_of_death": null,
+          "previous_spouse": null,
+          "parents": [2, 3],
+          "spouse": {
+            "uid": 5,
+            "type": "Parent",
+            "name": "Henry Mattison",
+            "is_male": true,
+            "is_alive": true,
+            "date_of_birth": "18-03-1945",
+            "date_of_death": null,
+            "previous_spouse": null,
+            "parents": null,
+            "spouse": 4
+          },
+          "children": [
+            {
+              "uid": 6,
+              "type": "Leaf",
+              "name": "Justin Mattison",
+              "is_male": true,
+              "is_alive": true,
+              "date_of_birth": "04-10-2000",
+              "date_of_death": null,
+              "previous_spouse": null,
+              "spouse": null,
+              "parents": [4, 5]
+            },
+            {
+              "uid": 7,
+              "type": "Leaf",
+              "name": "Jeonna Mattison",
+              "is_male": false,
+              "is_alive": true,
+              "date_of_birth": "04-10-2000",
+              "date_of_death": null,
+              "previous_spouse": null,
+              "spouse": null,
+              "parents": [4, 5]
+            }
+          ]
+        }
+      ]
+    },
+    "children": [
+      {
+        "uid": 8,
+        "type": "Parent",
+        "name": "Cornelia Betty Emmershon",
+        "is_male": false,
+        "is_alive": true,
+        "date_of_birth": "26-07-1980",
+        "date_of_death": null,
+        "previous_spouse": null,
+        "parents": [1, 2],
+        "spouse": {
+          "uid": 9,
+          "type": "Parent",
+          "name": "Otto Emmershon",
+          "is_male": true,
+          "is_alive": true,
+          "date_of_birth": "26-07-1975",
+          "date_of_death": null,
+          "previous_spouse": null,
+          "spouse": 8,
+          "parents": null
+        },
+        "children": [
+          {
+            "uid": 10,
+            "type": "Leaf",
+            "name": "Joseph Emmershon",
+            "is_male": true,
+            "is_alive": true,
+            "date_of_birth": "04-01-2000",
+            "date_of_death": null,
+            "previous_spouse": null,
+            "parents": [8, 9],
+            "spouse": {
+              "uid": 11,
+              "type": "Parent",
+              "name": "Kathy Bush",
+              "is_male": false,
+              "is_alive": true,
+              "date_of_birth": "10-05-2003",
+              "date_of_death": null,
+              "previous_spouse": null,
+              "parents": null,
+              "spouse": 10
+            },
+            "children": [
+              {
+                "uid": 12,
+                "type": "Leaf",
+                "name": "Sadie Emmershon",
+                "is_male": false,
+                "is_alive": true,
+                "date_of_birth": "02-02-2023",
+                "date_of_death": null,
+                "previous_spouse": null,
+                "spouse": null,
+                "parents": [10, 11]
+              }
+            ]
+          },
+          {
+            "uid": 13,
+            "type": "Leaf",
+            "name": "Alaina Emmershon",
+            "is_male": false,
+            "is_alive": true,
+            "date_of_birth": "16-05-2006",
+            "date_of_death": null,
+            "previous_spouse": null,
+            "spouse": null,
+            "parents": [8, 9]
+          }
+        ]
+      },
+      {
+        "uid": 14,
+        "type": "Parent",
+        "name": "Onarie Betty",
+        "is_male": false,
+        "is_alive": true,
+        "date_of_birth": "24-11-1996",
+        "date_of_death": null,
+        "parents": [1, 2],
+        "previous_spouse": null,
+        "spouse": {
+          "uid": 15,
+          "type": "Parent",
+          "name": "Caithlyn Sahr Betty",
+          "is_male": false,
+          "is_alive": true,
+          "date_of_birth": "16-05-1985",
+          "date_of_death": null,
+          "previous_spouse": null,
+          "parents": null,
+          "spouse": 14
+        },
+        "children": [
+          {
+            "uid": 16,
+            "type": "Leaf",
+            "name": "Kevin Betty",
+            "is_male": true,
+            "is_alive": false,
+            "date_of_birth": "16-10-2014",
+            "date_of_death": "02-02-2016",
+            "previous_spouse": null,
+            "spouse": null,
+            "parents": [14, 15]
+          },
+          {
+            "uid": 17,
+            "type": "Leaf",
+            "name": "Alaina Betty",
+            "is_male": false,
+            "is_alive": true,
+            "date_of_birth": "08-01-2006",
+            "date_of_death": null,
+            "previous_spouse": null,
+            "spouse": null,
+            "parents": [14, 15]
+          }
+        ]
+      }
+    ]
   }
-]
+}

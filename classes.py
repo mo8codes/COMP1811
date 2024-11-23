@@ -1,29 +1,30 @@
 from datetime import datetime
 
+from json_functions import read_json
+
 
 class Person:
-    def __init__(self, uid, type_of, name, previous_spouses, is_male, is_alive, date_of_birth, date_of_death, spouse, parents):
+    def __init__(self, uid, name, is_male, is_alive, date_of_birth, date_of_death, mother, father, spouse, previous_spouses):
         self.uid = uid # Integer
-        self.type_of = type_of # String parent or Leaf
         self.name = name # String
-        self.previous_spouses = previous_spouses
         self.is_male = is_male # Boolean
         self.is_alive = is_alive # Boolean
         self.date_of_birth = datetime.strptime(date_of_birth, "%d-%m-%Y") # ? String ?
         self.date_of_death = datetime.strptime(date_of_death, "%d-%m-%Y") # ? String ?
-        self.spouse = spouse # UID or None
-        self.parents = parents # Dictionary of their UID or None for Root subclass
+        self.mother = mother
+        self.father = father
+        self.spouse = spouse # Object or None (Leaves and Parents can have a spouse)
+        self.previous_spouses = previous_spouses
 
     def get_spouse(self): #Mo
         # For use in other functions
         pass
-        
 
     def get_parents(self): #Mo
         # (Feature 1ai)
         pass
 
-    def get_siblings(self):
+    def get_siblings(self, uid):
         # (Feature 2ai)
         pass
 
@@ -66,7 +67,6 @@ class Leaf(Person):
 # Person that is not a Leaf but is at the top of the family tree meaning their parents aren't included in the family tree when it is printed.
 class Root(Person):
     pass
-
 
 class FamilyTree:
     def get_immediate_family(self):  # Mo
