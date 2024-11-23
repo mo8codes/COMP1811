@@ -1,7 +1,5 @@
 from datetime import datetime
 
-from json_functions import read_json
-
 
 class Person:
     def __init__(self, uid, name, is_male, is_alive, date_of_birth, date_of_death, mother, father, spouse, previous_spouses):
@@ -17,12 +15,11 @@ class Person:
         self.previous_spouses = previous_spouses
 
     def get_spouse(self): #Mo
-        # For use in other functions
-        pass
+        return self.spouse
 
     def get_parents(self): #Mo
         # (Feature 1ai)
-        pass
+        return self.mother,self.father
 
     def get_siblings(self, uid):
         # (Feature 2ai)
