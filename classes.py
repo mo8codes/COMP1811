@@ -11,12 +11,13 @@ class Person:
         self.is_alive = is_alive # Boolean
         self.date_of_birth = datetime.strptime(date_of_birth, "%d-%m-%Y") # ? String ?
         self.date_of_death = datetime.strptime(date_of_death, "%d-%m-%Y") # ? String ?
-        self.spouse = spouse # Object or None (Leaves and Parents can have a spouse)
-        self.parents = parents # Dictionary of their UID
+        self.spouse = spouse # UID or None
+        self.parents = parents # Dictionary of their UID or None for Root subclass
 
     def get_spouse(self): #Mo
         # For use in other functions
         pass
+        
 
     def get_parents(self): #Mo
         # (Feature 1ai)
