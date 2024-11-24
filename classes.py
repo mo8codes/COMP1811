@@ -19,7 +19,8 @@ class Person:
 
     def get_parents(self): #Mo
         # (Feature 1ai)
-        return self.mother,self.father
+        mother,father = self.mother,self.father
+
 
     def get_siblings(self, uid):
         # (Feature 2ai)
