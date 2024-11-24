@@ -3,8 +3,7 @@ from start_menu import start_menu
 
 def main():
     people = create_objects_from_json() # Contains all people
-    print(people) # Temporary for testing line
-    #start_menu() # Create the start menu in the console
+    start_menu() # Create the start menu in the console
 
 if __name__ == "__main__":
     main()
