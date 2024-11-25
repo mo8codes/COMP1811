@@ -19,10 +19,12 @@ def create_objects_from_json():
                         is_alive=person["is_alive"],
                         date_of_birth=person["date_of_birth"],
                         date_of_death=person["date_of_death"],
-                        spouse=person["spouse"],
-                        previous_spouses=person["previous_spouses"],
                         mother=person["mother"],
-                        father=person["father"])
+                        father=person["father"],
+                        spouse=person["spouse"],
+                        previous_spouses=person["previous_spouses"]
+                        )
+                    #print(obj.uid,obj.name,obj.is_male,obj.is_alive,obj.date_of_birth,obj.date_of_death,obj.mother,obj.father,obj.spouse,obj.previous_spouses)
 
                 elif person["type"] == "Parent":
                     obj = Parent(
@@ -32,10 +34,10 @@ def create_objects_from_json():
                         is_alive=person["is_alive"],
                         date_of_birth=person["date_of_birth"],
                         date_of_death=person["date_of_death"],
-                        spouse=person["spouse"],
-                        previous_spouses=person["previous_spouses"],
                         mother=person["mother"],
                         father=person["father"],
+                        spouse=person["spouse"],
+                        previous_spouses=person["previous_spouses"],
                         children=person.get("children", None),
                         grandchildren=person.get("grandchildren", None)
                     )
@@ -47,15 +49,16 @@ def create_objects_from_json():
                         is_alive=person["is_alive"],
                         date_of_birth=person["date_of_birth"],
                         date_of_death=person["date_of_death"],
-                        spouse=person["spouse"],
-                        previous_spouses=person["previous_spouses"],
                         mother=None,
                         father=None,
+                        spouse=person["spouse"],
+                        previous_spouses=person["previous_spouses"],
                         children=person.get("children", None),
                         grandchildren=person.get("grandchildren", None)
                     )
 
                 # Add the created object to the dictionary
+                print(obj.grandchildren)
                 people[person["uid"]] = obj
 
     return people  # Dictionary UID:Object

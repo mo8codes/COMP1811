@@ -1,3 +1,5 @@
+import time
+
 def start_menu(people):
     print("****************************************************************************************************")
     print("||                  Welcome to the Emmershon Family Tree                                          ||")
@@ -25,21 +27,36 @@ def start_menu(people):
     match user_input:
         case "1ai":
             print("Feature 1ai: Select an individual and return and display their parents (if any).")
-            list_people(people)  # Placeholder for function to list people
-            who = input("Which person's parents would you like to know? Pick a number: ")
-            # Add functionality to display the parents of the selected person
+            list_people(people)
+            who = get_who("Which person's parents would you like to know? Pick a number: ")
+
+            try:
+                # Ensure the UID exists in the people dictionary
+                print(people[who].get_parents(people))
+                time.sleep(2.5)
+                start_menu(people)
+
+            except ValueError:
+                print("Invalid input. Please enter a valid number.")
+            except KeyError:
+                print("No person found with that ID.")
 
         case "1aii":
             print("Feature 1aii: Select an individual and return and display their grandchildren (if any).")
             list_people(people)
-            who = input("Which person's grandchildren would you like to know? Pick a number: ")
-            # Add functionality to display the grandchildren of the selected person
+            who = get_who("Which person's grandchildren would you like to know? Pick a number: ")
+
+            if people[who]:
+                pass
+
+
 
         case "1bi":
             print("Feature 1bi: Select an individual and display their immediate family.")
             list_people(people)
-            who = input("Which person's immediate family would you like to know? Pick a number: ")
+            who = get_who("Which person's immediate family would you like to know? Pick a number: ")
             # Add functionality to display the immediate family
+            people[who].get_immediate_family()
 
         case "1bii":
             print("Feature 1bii: Select an individual and display their extended family.")
@@ -96,3 +113,13 @@ def start_menu(people):
 def list_people(people):
     for uid, person in people.items():
         print(f"{uid}. {person.name}")
+
+
+def get_who(phrase):
+    while True:
+        try:
+            who = int(input(phrase))
+            return who
+        except ValueError:
+            # If not int then try again
+            print("Invalid input. Please enter a valid number.")
