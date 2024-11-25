@@ -35,7 +35,7 @@ class Person:
     def get_immediate_family(self, people):  # Mo
         # (Feature 1bi)
         self.get_parents(people)
-        #self.get_siblings(people)
+        #self.get_siblings(people) #TODO uncomment after Ashanti's code is merged
         self.get_spouse(people)
         if isinstance(self, (Parent, Root)):
             self.add_descendants(people)
@@ -118,14 +118,15 @@ class Parent(Person):
 
 
 class Leaf(Person):
-    def add_descendants(self, people): # Polymorphism, parent class has a different method of the same name.
+    def add_descendants(self, _people): # Polymorphism, parent class has a different method of the same name.
+        # People is passed but never used as this function is filler so that is why there is an underline
         self.children = None  # No children for a Leaf
         self.grandchildren = None  # No grandchildren for a Leaf
-        return None # Leaves have no descendants :(
+        return None # Leaves have no descendants
 
 
-# Person that is could be a Leaf or a Parent but is at the top of the family tree meaning their parents aren't included in the family tree when it is printed.
-# Inherits from parent due to inheritance of some of parent's functions
+# Person that could be a Leaf or a Parent but is at the top of the family tree meaning their parents aren't included
+# in the family tree when it is printed.  Inherits from parent due to inheritance of some of parent's functions
 class Root(Parent):
     def __init__(self, uid, name, is_male, is_alive, date_of_birth, date_of_death, mother, father, spouse, previous_spouses, children, grandchildren):
         super().__init__(uid, name, is_male, is_alive, date_of_birth, date_of_death, mother, father, spouse, previous_spouses, children, grandchildren)
