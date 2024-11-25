@@ -1,5 +1,5 @@
 import time
-
+from classes import *
 def start_menu(people):
     print("****************************************************************************************************")
     print("||                  Welcome to the Emmershon Family Tree                                          ||")
@@ -45,24 +45,26 @@ def start_menu(people):
             print("Feature 1aii: Select an individual and return and display their grandchildren (if any).")
             list_people(people)
             who = get_who("Which person's grandchildren would you like to know? Pick a number: ")
-
-            if people[who]:
-                pass
-
-
+            if isinstance(people[who], (Parent, Root)):
+                if people[who]:
+                    people[who].get_grandchildren(people)
+            else:
+                print("No grandchildren found.")
 
         case "1bi":
             print("Feature 1bi: Select an individual and display their immediate family.")
             list_people(people)
             who = get_who("Which person's immediate family would you like to know? Pick a number: ")
             # Add functionality to display the immediate family
-            people[who].get_immediate_family()
+            people[who].get_immediate_family(people)
 
         case "1bii":
             print("Feature 1bii: Select an individual and display their extended family.")
-            list_people(people)
-            who = input("Which person's extended family would you like to know? Pick a number: ")
+            #list_people(people)
+            #who = input("Which person's extended family would you like to know? Pick a number: ")
             # Add functionality to display the extended family
+            get_extended_family(people)
+
 
         case "2ai":
             print("Feature 2ai: Select an individual and return and display their siblings (if any).")
@@ -99,10 +101,30 @@ def start_menu(people):
         case "3bi":
             print("Feature 3bi: Find the number of children for each individual.")
             # Add functionality to count children for each individual
+            counter = 0
+            num_people = 0
+            for person in people:
+                people[person].add_descendants(people)  # Add the children and grandchildren to the objects
+                if (people[person].children):
+                    print(people[person].name,"has", len(people[person].children), "children.")
+
+
+
 
         case "3bii":
             print("Feature 3bii: Find the average number of children per person.")
             # Add functionality to calculate the average number of children per person
+            counter = 0
+            num_people = 0
+            for person in people:
+                if isinstance(people[person], (Parent, Root)):  # Else is a leaf therefore no children
+                    if people[person].is_male:  # Only count children once, only works if they have a father, since we made the people in the family tree this isn't a problem
+                        people[person].add_descendants(people)  # Add the children and grandchildren to the objects
+                        num_people += 1
+                        counter += int((people[person].get_children(people)))
+            # Print results
+            print("Average number of children per person with children:", counter / num_people)
+            print("Average number of children per person including those without children:", counter / len(people))
 
         case "exit":
             print("Exiting the program. Goodbye!")
@@ -123,3 +145,9 @@ def get_who(phrase):
         except ValueError:
             # If not int then try again
             print("Invalid input. Please enter a valid number.")
+
+def get_extended_family(people):  # Mo
+    # (Feature 1bii) - Just prints everyone's name who is alive.
+    for person in people:
+        if people[person].is_alive:
+            print(people[person].name)

@@ -58,7 +58,6 @@ def create_objects_from_json():
                     )
 
                 # Add the created object to the dictionary
-                print(obj.grandchildren)
                 people[person["uid"]] = obj
 
     return people  # Dictionary UID:Object

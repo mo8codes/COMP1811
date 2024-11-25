@@ -7,8 +7,8 @@
       "is_alive": true,
       "date_of_birth": "10-03-1970",
       "date_of_death": null,
-      "mother": null,
-      "father": null,
+      "mother": 5,
+      "father": 4,
       "spouse": 11,
       "previous_spouses": null,
       "type": "Parent"
