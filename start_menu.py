@@ -1,34 +1,41 @@
 import time
 from classes import *
+
 def start_menu(people):
     print("****************************************************************************************************")
-    print("||                  Welcome to the Emmershon Family Tree                                          ||")
+    print("||                         Welcome to the Emmershon Family Tree                                   ||")
     print("||________________________________________________________________________________________________||")
     print("|| Select any option below to learn more (type the text before the .):                            ||")
     print("||________________________________________________________________________________________________||")
-    print("||  1ai. Select an individual and return and display their parents (if any)                       ||")
-    print("||  1aii. Select an individual and return and display their grandchildren (if any)                ||")
-    print("||  1bi. Select an individual and display their immediate family                                  ||")
-    print("||  1bii. Select an individual and display their extended family                                  ||")
-    print("||  2ai. Select an individual and return and display their siblings (if any)                      ||")
-    print("||  2aii. Select an individual and return and display their cousins (if any)                      ||")
-    print("||  2bi. Display a list of birthdays of all family members                                        ||")
-    print("||  2bii. Create a sorted birthday calendar (merge if multiple on the same date)                  ||")
-    print("||  3ai. Create an integrated program with both branches                                          ||")
-    print("||  3aii. Test output using people from the partner's branch                                      ||")
-    print("||  3aiii. Find the average age of death of everyone in the combined family tree                  ||")
-    print("||  3bi. Find the number of children for each individual                                          ||")
-    print("||  3bii. Find the average number of children per person                                          ||")
-    print("||  exit. Exit the program                                                                        ||")
+    print("||  I. Select an individual and return and display their parents (if any)                         ||")
+    print("||  +. Display the entire family tree                                                             ||")
+    print("||  II. Select an individual and return and display their grandchildren (if any)                  ||")
+    print("||  III. Select an individual and display their immediate family                                  ||")
+    print("||  IV. Select an individual and display their extended family                                    ||")
+    print("||  V. Select an individual and return and display their siblings (if any)                        ||")
+    print("||  VI. Select an individual and return and display their cousins (if any)                        ||")
+    print("||  VII. Display a list of birthdays of all family members                                        ||")
+    print("||  VIII. Create a sorted birthday calendar (merge if multiple on the same date)                  ||")
+    print("||  IX. Create an integrated program with both branches                                           ||")
+    print("||  X. Test output using people from the partner's branch                                         ||")
+    print("||  XI. Find the average age of death of everyone in the combined family tree                     ||")
+    print("||  XII. Find the number of children for each individual                                          ||")
+    print("||  XIII. Find the average number of children per person                                          ||")
+    print("||  XIV. Exit the program                                                                         ||")
     print("****************************************************************************************************")
 
     user_input = input("Enter your choice: ").strip()
 
     match user_input:
-        case "1ai":
-            print("Feature 1ai: Select an individual and return and display their parents (if any).")
+        case "+":
+            print("************************************************************")
+            print("Displaying a list of all the people in the family tree....||")
+            print("************************************************************")
             list_people(people)
-            who = get_who("Which person's parents would you like to know? Pick a number: ")
+        case "I":
+            print("Feature I: Select an individual and return and display their parents (if any).")
+            list_people(people)
+            who = get_who("Select a number from the list to display a person's parents: ")
 
             try:
                 # Ensure the UID exists in the people dictionary
@@ -41,8 +48,8 @@ def start_menu(people):
             except KeyError:
                 print("No person found with that ID.")
 
-        case "1aii":
-            print("Feature 1aii: Select an individual and return and display their grandchildren (if any).")
+        case "II":
+            print("Feature II: Select an individual and return and display their grandchildren (if any).")
             list_people(people)
             who = get_who("Which person's grandchildren would you like to know? Pick a number: ")
             if isinstance(people[who], (Parent, Root)):
@@ -51,61 +58,65 @@ def start_menu(people):
             else:
                 print("No grandchildren found.")
 
-        case "1bi":
-            print("Feature 1bi: Select an individual and display their immediate family.")
+        case "III":
+            print("Feature III: Select an individual and display their immediate family.")
             list_people(people)
             who = get_who("Which person's immediate family would you like to know? Pick a number: ")
             # Add functionality to display the immediate family
             people[who].get_immediate_family(people)
 
-        case "1bii":
-            print("Feature 1bii: Select an individual and display their extended family.")
+        case "IV":
+            print("Feature IV: Select an individual and display their extended family.")
             # Add functionality to display the extended family
             get_extended_family(people)
 
 
-        case "2ai":
-            print("Feature 2ai: Select an individual and return and display their siblings (if any).")
+        case "V":
+            print("Feature II: Select an individual to return and display their siblings (if any).")
             list_people(people)
-            #who = input("Which person's siblings would you like to know? Pick a number: ")
-            # Add functionality to display siblings
+            who = get_who("Which person's siblings would you like to know? Pick a number: ")
+            if isinstance(people[who], (Parent)):
+                if people[who]:
+                    people[who].get_siblings(people)
+            else:
+                print("No siblings found.")
 
-        case "2aii":
-            print("Feature 2aii: Select an individual and return and display their cousins (if any).")
+        case "VI":
+            print("Feature VI: Select an individual and return and display their cousins (if any).")
             list_people(people)
             #who = input("Which person's cousins would you like to know? Pick a number: ")
             # Add functionality to display cousins
 
-        case "2bi":
-            print("Feature 2bi: Display a list of birthdays of all family members.")
-            # Add functionality to display list of birthdays
+        case "VII":
+            print("Feature VII: Displaying a list of birthdays of all family members.")
 
-        case "2bii":
-            print("Feature 2bii: Create a sorted birthday calendar.")
+
+        case "VIII":
+            print("Feature VIII: Create a sorted birthday calendar.")
             # Add functionality to create and display birthday calendar
 
-        case "3ai":
-            print("Feature 3ai: Create an integrated program with both branches.")
+        case "IX":
+            print("Feature IX: Create an integrated program with both branches.")
             # Add functionality for integration
 
-        case "3aii":
+        case "X":
             print("Feature 3aii: Test output using people from the partner's branch.")
             # Add functionality to test output with partner branch
 
-        case "3aiii":
-            print("Feature 3aiii: Find the average age of death of everyone in the combined family tree.")
+        case "XI":
+            print("Feature XI: Find the average age of death of everyone in the combined family tree.")
             # Add functionality to calculate average age of death
 
-        case "3bi":
-            print("Feature 3bi: Find the number of children for each individual.")
+        case "XII":
+            print("Feature XII: Find the number of children for each individual.")
             # Add functionality to count children for each individual
             for person in people:
                 people[person].add_descendants(people)  # Add the children and grandchildren to the objects
                 if people[person].children:
                     print(people[person].name,"has", len(people[person].children), "children.")
 
-        case "3bii":
-            print("Feature 3bii: Find the average number of children per person.")
+        case "XIII":
+            print("Feature XIII: Find the average number of children per person.")
             # Add functionality to calculate the average number of children per person
             counter = 0
             num_people = 0

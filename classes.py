@@ -35,7 +35,7 @@ class Person:
     def get_immediate_family(self, people):  # Mo
         # (Feature 1bi)
         self.get_parents(people)
-        #self.get_siblings(people) #TODO uncomment after Ashanti's code is merged
+        self.get_siblings(people)
         self.get_spouse(people)
         if isinstance(self, (Parent, Root)):
             self.add_descendants(people)
@@ -55,18 +55,53 @@ class Person:
         print("Father: " + people[int(self.father)].name)  # get the object using the father's uid as the key in the people dictionary
         return f"Mother UID: {self.mother} \nFather UID: {self.father}"
 
-    def get_siblings(self, people):
-        # (Feature 2ai)
-        # Note from Mo, please include code to print the name of each sibling like how I have done get parents and get spouse
-        pass
+    def get_siblings(self, people, person):
+            siblings = []
+
+            #used to check if the person has parents
+            if self.mother is None and self.father is None:
+                print("The person you selected has no siblings.")
+                return siblings
+
+            # Loop through all people to find siblings
+            for uid, person in people.items():
+                #Skips the person and prints their siblings
+                if person.uid == self.uid:
+                    continue
+
+                #Checks to see if atleast one parent is common between the person selected
+                if ((self.mother and person.mother and self.mother == person.mother) or
+                        (self.father and person.father and self.father == person.father)):
+                    siblings.append(person.uid)
+                    # Print siblings if found
+                    if siblings:
+                        print("Siblings: ")
+                        for i, sibling_uid in enumerate(siblings, 1):
+                            print(f"{i}. {people[sibling_uid].name}")
+                    else:
+                        print("No siblings found.")
+
+                    return siblings
 
     def get_cousins(self):
         # (Feature 2aii)
         pass
 
-    def get_all_birthdays(self):
+    def get_all_birthdays(self, people):
         # (Feature 2bi)
-        pass
+            birthdays = {}
+
+            for uid, person in people.items():
+                birthday = person.date_of_birth.strftime("%d-%m")
+                if birthday not in birthdays:
+                    birthdays[birthday] = []
+                birthdays[birthday].append(person.name)
+
+            print("Family Birthday Information:")
+            for birth_date, names in sorted(birthdays.items()):
+                print(f"{birth_date}: {', '.join(names)}")
+
+            return birthdays
 
     def print_birthday_calendar(self):
         # (Feature 2bii)
@@ -135,11 +170,27 @@ class Root(Parent):
         self.children = children if children else None  # A list of children for the Root
         self.grandchildren = grandchildren if grandchildren else None  # A list of grandchildren for the Root
 
-class FamilyTree:
-    def display_family_tree(self):
-        # (Feature 3ai)
-        pass
+class FamilyTreeCalculations:
 
+    def get_all_birthdays(self, people):
+        # (Feature 2bi)
+        birthdays = {}
+
+        for birth_date, person in people.items():
+            birthday = person.date_of_birth.strftime("%d-%m")
+            if birthday not in birthdays:
+                birthdays[birthday] = []
+            birthdays[birthday].append(person.name)
+
+        print("List of Family Birthdays:")
+        for birth_date, names in sorted(birthdays.items()):
+            print(f"{birth_date}: {', '.join(names)}")
+
+        return birthdays
+
+    def print_birthday_calendar(self):
+        # (Feature 2bii)
+        pass
 
 
 
