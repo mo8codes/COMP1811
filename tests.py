@@ -8,7 +8,7 @@ class F1aiTest(unittest.TestCase):
         # Implement test to check
         pass
 class F1aiiTest(unittest.TestCase):
-    """Test for Feature 1a-ii: Immediate Family"""
+    """Test for Feature 1a-ii: """
 
     def test2_name(self):
         # Implement test to check

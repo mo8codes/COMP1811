@@ -60,8 +60,6 @@ def start_menu(people):
 
         case "1bii":
             print("Feature 1bii: Select an individual and display their extended family.")
-            #list_people(people)
-            #who = input("Which person's extended family would you like to know? Pick a number: ")
             # Add functionality to display the extended family
             get_extended_family(people)
 
@@ -69,13 +67,13 @@ def start_menu(people):
         case "2ai":
             print("Feature 2ai: Select an individual and return and display their siblings (if any).")
             list_people(people)
-            who = input("Which person's siblings would you like to know? Pick a number: ")
+            #who = input("Which person's siblings would you like to know? Pick a number: ")
             # Add functionality to display siblings
 
         case "2aii":
             print("Feature 2aii: Select an individual and return and display their cousins (if any).")
             list_people(people)
-            who = input("Which person's cousins would you like to know? Pick a number: ")
+            #who = input("Which person's cousins would you like to know? Pick a number: ")
             # Add functionality to display cousins
 
         case "2bi":
@@ -101,15 +99,10 @@ def start_menu(people):
         case "3bi":
             print("Feature 3bi: Find the number of children for each individual.")
             # Add functionality to count children for each individual
-            counter = 0
-            num_people = 0
             for person in people:
                 people[person].add_descendants(people)  # Add the children and grandchildren to the objects
-                if (people[person].children):
+                if people[person].children:
                     print(people[person].name,"has", len(people[person].children), "children.")
-
-
-
 
         case "3bii":
             print("Feature 3bii: Find the average number of children per person.")
