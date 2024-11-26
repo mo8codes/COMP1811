@@ -1,146 +1,201 @@
-import time
-from classes import *
-def start_menu(people):
-    print("****************************************************************************************************")
-    print("||                  Welcome to the Emmershon Family Tree                                          ||")
-    print("||________________________________________________________________________________________________||")
-    print("|| Select any option below to learn more (type the text before the .):                            ||")
-    print("||________________________________________________________________________________________________||")
-    print("||  1ai. Select an individual and return and display their parents (if any)                       ||")
-    print("||  1aii. Select an individual and return and display their grandchildren (if any)                ||")
-    print("||  1bi. Select an individual and display their immediate family                                  ||")
-    print("||  1bii. Select an individual and display their extended family                                  ||")
-    print("||  2ai. Select an individual and return and display their siblings (if any)                      ||")
-    print("||  2aii. Select an individual and return and display their cousins (if any)                      ||")
-    print("||  2bi. Display a list of birthdays of all family members                                        ||")
-    print("||  2bii. Create a sorted birthday calendar (merge if multiple on the same date)                  ||")
-    print("||  3ai. Create an integrated program with both branches                                          ||")
-    print("||  3aii. Test output using people from the partner's branch                                      ||")
-    print("||  3aiii. Find the average age of death of everyone in the combined family tree                  ||")
-    print("||  3bi. Find the number of children for each individual                                          ||")
-    print("||  3bii. Find the average number of children per person                                          ||")
-    print("||  exit. Exit the program                                                                        ||")
-    print("****************************************************************************************************")
+import classes
+import json_functions
+from json_functions import read_json
+from classes import FamilyCalculations
+from classes import FamilyTree
 
-    user_input = input("Enter your choice: ").strip()
+def person_search(search_uid):
+    results = []
+    for uid, person in sorted(people.items()):
+        if person.uid == search_uid:
+            results.append(person.name)
+            return (results)
 
-    match user_input:
-        case "1ai":
-            print("Feature 1ai: Select an individual and return and display their parents (if any).")
-            list_people(people)
-            who = get_who("Which person's parents would you like to know? Pick a number: ")
 
-            try:
-                # Ensure the UID exists in the people dictionary
-                print(people[who].get_parents(people))
-                time.sleep(2.5)
-                start_menu(people)
+def child1_search(search_uid):
+    results = []
+    for uid, person in sorted(parents.items()):
+        if person.child1 == search_uid:
+            results.append(person.name)
+            return (results)
 
-            except ValueError:
-                print("Invalid input. Please enter a valid number.")
-            except KeyError:
-                print("No person found with that ID.")
 
-        case "1aii":
-            print("Feature 1aii: Select an individual and return and display their grandchildren (if any).")
-            list_people(people)
-            who = get_who("Which person's grandchildren would you like to know? Pick a number: ")
-            if isinstance(people[who], (Parent, Root)):
-                if people[who]:
-                    people[who].get_grandchildren(people)
+def exit_message():
+    print("Goodbye!")
+    exit()
+
+
+def start_menu():
+    while True: #Loops until the user exits the menu
+        print( "*****************************************************************************************************")
+print("||________________________________________________________________________________________________||")
+print("||                              Welcome to the Family Tree Tool                                   || ")
+print("||________________________________________________________________________________________________||")
+print("|| To display the entire family tree: Enter 1                                                     ||")
+print("||                                                                                                ||")
+print("|| To display all parents:  Enter 2                                                               ||")
+print("||                                                                                                ||")
+print("|| To display all grandparents:  Enter 3                                                          ||")
+print("||                                                                                                ||")
+print("|| To display all children/grandchildren:  Enter 4                                                ||")
+print("||                                                                                                ||")
+print("|| To display all grandchildren:  Enter 5                                                         ||")
+print("||                                                                                                ||")
+print("|| To display the generation index of a particular family member:  Enter 6                        ||")
+print("||                                                                                                ||")
+print("|| To display the date of birth of a particular family member:  Enter 7                           ||")
+print("||                                                                                                ||")
+print("|| To display the date of death of a particular family member:  Enter 8                           ||")
+print("||                                                                                                ||")
+print("|| To display the gender of a particular family member:  Enter 9                                  ||")
+print("||                                                                                                ||")
+print("|| To display the mother of a particular family member:  Enter 10                                 ||")
+print("||                                                                                                ||")
+print("|| To display the father of a particular family member:  Enter 11                                 ||")
+print("||                                                                                                ||")
+print("|| To display the partner of a particular family member:  Enter 12                                ||")
+print("||                                                                                                ||")
+print("|| To display the children of a particular family member:  Enter 13                               ||")
+print("||                                                                                                ||")
+print("|| To display the grandchildren of a particular family member:  Enter 14                          ||")
+print("||                                                                                                ||")
+print("|| To display the parents of a particular family member: Enter 15                                 ||")
+print("||                                                                                                ||")
+print("|| To display the immediate family members: Enter 16                                              ||") #functions here and above should be added by Mo
+print("||                                                                                                ||")
+print("|| To display the siblings of a member: Enter 17                                                  ||")
+print("||                                                                                                ||")
+print("|| To display the cousins of a member: Enter 18                                                   ||")
+print("||                                                                                                ||")
+print("|| To display birthdays of members of the entire family: Enter 19                                 ||")
+print("||                                                                                                ||")
+print("|| To exit: Enter 20                                                                              ||")
+user_input = input("Select any option (1-20) above to learn more: " )
+people, parents, grandparents = read_json('maternal.json')
+
+if user_input == "1":
+    print("Displaying the entire family tree:")
+    for uid, person in sorted(people.items()):
+        print(person.name)
+    exit_message()
+
+if user_input == "2":
+    print("Displaying all parents:")
+    for uid, parent in sorted(parents.items()):
+        print(parent.name)
+    exit_message()
+
+if user_input == "3":
+    print("Displaying all grandparents:")
+    for uid, grandparent in sorted(grandparents.items()):
+        print(grandparent.name)
+    exit_message()
+
+if user_input == "4":
+    print("Displaying all children/grandchildren:")
+    for uid, person in sorted(people.items()):
+        if person.level in [1, 2]:
+            print(person.name)
+    exit_message()
+
+if user_input == "5":
+    print("Displaying all grandchildren:")
+    for uid, person in sorted(people.items()):
+        if person.level == 2:
+            print(person.name)
+    exit_message()
+
+if user_input == "6":
+    searchName = input("Enter Full Name (Capitalised): ")
+    for uid, person in sorted(people.items()):
+        if person.name == searchName:
+            print(f"They are from generation {person.level + 1} of the family.")
+    exit_message()
+
+if user_input == "7":
+    searchName = input("Enter Full Name (Capitalised): ")
+    for uid, person in sorted(people.items()):
+        if person.name == searchName:
+            print(f"Their date of birth is: {person.date_of_birth}")
+    exit_message()
+
+
+if user_input == "8":
+    chosen_uid = input("Enter the name of a person to find their siblings:")
+    for uid, person in sorted(people.items()):
+        if chosen_uid in people:
+            siblings = get_siblings()
+            if siblings:
+                print(f"Their siblings are: {siblings}")
+            for sibling in siblings:
+                print(f"-{sibling}")
             else:
-                print("No grandchildren found.")
+                print(f"{[chosen_uid].name} has no siblings listed in the tree.")
 
-        case "1bi":
-            print("Feature 1bi: Select an individual and display their immediate family.")
-            list_people(people)
-            who = get_who("Which person's immediate family would you like to know? Pick a number: ")
-            # Add functionality to display the immediate family
-            people[who].get_immediate_family(people)
+    exit_message()
 
-        case "1bii":
-            print("Feature 1bii: Select an individual and display their extended family.")
-            # Add functionality to display the extended family
-            get_extended_family(people)
+if user_input == "9":
+    searchName = input("Enter Full Name: ")
+    for uid, person in sorted(people.items()):
+        if person.name == searchName:
+            if person.is_male == True:
+                print(f"They are male.")
+            elif person.is_male == False:
+                print(f"They are not male.")
+    exit_message()
 
+if user_input == "10":
+    searchName = input("Enter Full Name (Capitalised): ")
+    for uid, person in sorted(people.items()):
+        if person.name == searchName:
+            results = person_search(person.mother)
+            print(f"Their mother is: {results}")
+    exit_message()
 
-        case "2ai":
-            print("Feature 2ai: Select an individual and return and display their siblings (if any).")
-            list_people(people)
-            #who = input("Which person's siblings would you like to know? Pick a number: ")
-            # Add functionality to display siblings
+if user_input == "11":
+    searchName = input("Enter Full Name (Capitalised): ")
+    for uid, person in sorted(people.items()):
+        if person.name == searchName:
+            results = person_search(person.father)
+            print(f"Their father is: {results}")
+    exit_message()
 
-        case "2aii":
-            print("Feature 2aii: Select an individual and return and display their cousins (if any).")
-            list_people(people)
-            #who = input("Which person's cousins would you like to know? Pick a number: ")
-            # Add functionality to display cousins
+if user_input == "12":
+    searchName = input("Enter Full Name (Capitalised): ")
+    for uid, person in sorted(people.items()):
+        if person.name == searchName:
+            results = person_search(person.partner)
+            print(f"Their partner is: {results}")
+    exit_message()
 
-        case "2bi":
-            print("Feature 2bi: Display a list of birthdays of all family members.")
-            # Add functionality to display list of birthdays
+if user_input == "13":
+    searchName = input("Enter Full Name (Capitalised): ")
+    for uid, parent in sorted(parents.items()):
+        if parent.name == searchName:
+            child1_result = child1_search(parent.child1)
+            print(f"Their children are: {child1_result} & ")
+    exit_message()
 
-        case "2bii":
-            print("Feature 2bii: Create a sorted birthday calendar.")
-            # Add functionality to create and display birthday calendar
+elif user_input =="14":
+    searchName = input("Enter Full Name (Capitalised): ")
+    for uid, grandparent in sorted(grandparents.items()):
+        print(f"{grandparent.name} = {grandparent.grandchild1} & {grandparent.grandchild2} & {grandparent.grandchild3} & {grandparent.grandchild4}")
+    exit_message()
 
-        case "3ai":
-            print("Feature 3ai: Create an integrated program with both branches.")
-            # Add functionality for integration
+if user_input == "19":
+    print("Displaying all birthdays:")
+    for uid, person in sorted(people.items()):
+            print(f"{person.date_of_birth}")
+    exit_message()
 
-        case "3aii":
-            print("Feature 3aii: Test output using people from the partner's branch.")
-            # Add functionality to test output with partner branch
+if user_input == "20":
+    print("Enter a person to find their cousins:")
+    for uid, person in sorted(people.items()):
+        print(f"{person.name}")
+    exit_message()
 
-        case "3aiii":
-            print("Feature 3aiii: Find the average age of death of everyone in the combined family tree.")
-            # Add functionality to calculate average age of death
+elif user_input == "21":
+    exit_message()
 
-        case "3bi":
-            print("Feature 3bi: Find the number of children for each individual.")
-            # Add functionality to count children for each individual
-            for person in people:
-                people[person].add_descendants(people)  # Add the children and grandchildren to the objects
-                if people[person].children:
-                    print(people[person].name,"has", len(people[person].children), "children.")
-
-        case "3bii":
-            print("Feature 3bii: Find the average number of children per person.")
-            # Add functionality to calculate the average number of children per person
-            counter = 0
-            num_people = 0
-            for person in people:
-                if isinstance(people[person], (Parent, Root)):  # Else is a leaf therefore no children
-                    if people[person].is_male:  # Only count children once, only works if they have a father, since we made the people in the family tree this isn't a problem
-                        people[person].add_descendants(people)  # Add the children and grandchildren to the objects
-                        num_people += 1
-                        counter += int((people[person].get_children(people)))
-            # Print results
-            print("Average number of children per person with children:", counter / num_people)
-            print("Average number of children per person including those without children:", counter / len(people))
-
-        case "exit":
-            print("Exiting the program. Goodbye!")
-
-        case _:
-            print("Invalid option. Please try again.")
-
-def list_people(people):
-    for uid, person in people.items():
-        print(f"{uid}. {person.name}")
-
-
-def get_who(phrase):
-    while True:
-        try:
-            who = int(input(phrase))
-            return who
-        except ValueError:
-            # If not int then try again
-            print("Invalid input. Please enter a valid number.")
-
-def get_extended_family(people):  # Mo
-    # (Feature 1bii) - Just prints everyone's name who is alive.
-    for person in people:
-        if people[person].is_alive:
-            print(people[person].name)
+else:
+    print("Invalid Option, Please Restart.")
