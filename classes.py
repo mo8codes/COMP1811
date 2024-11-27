@@ -107,16 +107,12 @@ class Person:
             return []
         #Search for the parents of the selected person
         parents = [self.mother, self.father]
+        aunts_uncles = []
 
         #Locate the siblings of the parents(such as aunts and uncles)
-        aunts_uncles = []
-        for uid, person in people.items():
-            if person.uid != self.mother and person.uid != self.father:
-                if (person.mother == people[self.mother].mother or
-                person.father == people[self.father].father or
-                person.mother == people[self.father].mother or
-                person.father == people[self.mother].father):
-                    aunts_uncles.append(person.uid)
+        for parent in parents:
+            for person in Person.get_siblings(parent, people):
+                aunts_uncles.append(person)
 
         #Search for the cousins and store them in a list
         cousins = []
