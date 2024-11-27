@@ -75,7 +75,7 @@ class Person:
             siblings = []
 
             #used to check if the person has parents
-            if self.mother is None and self.father is None:
+            if self.mother.uid is None and self.father.uid is None:
                 print("The person you selected has no siblings.")
                 return siblings
 
@@ -100,19 +100,26 @@ class Person:
                     return siblings
 
     def get_cousins(self, people):
-        #Find out if the person has any siblings
+        #Find out if the person has any parents
 
         if self.mother is None or self.father is None:
             print("The person you selected has no cousins.")
             return []
+
         #Search for the parents of the selected person
         parents = [self.mother, self.father]
+        print(self.mother, self.father)
         aunts_uncles = []
 
         #Locate the siblings of the parents(such as aunts and uncles)
         for parent in parents:
-            for person in Person.get_siblings(parent, people):
-                aunts_uncles.append(person)
+            if parent != 'None':
+                for  parent_uid in people:
+                    parent_uid = people[parent_uid]
+                    print(parent_uid)
+                    siblings = parent.get_siblings[parent_uid]
+                    aunts_uncles.append(siblings)
+        print(aunts_uncles,"auvunvle")
 
         #Search for the cousins and store them in a list
         cousins = []

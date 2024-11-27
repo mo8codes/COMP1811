@@ -83,7 +83,7 @@ def start_menu(people):
             who = get_who("Select an individual to display their cousins: (Pick a number:)")
 
             try:
-                people[who].get_cousins(people)
+                people[who].get_cousins( people)
             except KeyError:
                 print("This person has no cousins")
             finally:
