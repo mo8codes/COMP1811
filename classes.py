@@ -15,6 +15,23 @@ class Person:
         self.children = None
         self.grandchildren = None
 
+        def print_birthday_calendar(self, people, birthday_key):
+            # (Feature 2bii)
+            birthday_calendar = {}  # stores birthday calendar in a list to be searched through
+
+            for person in people.values():
+                date_of_birth = person.get_all_birthdays()
+                if date_of_birth:
+                    date_of_birth = people.date_of_birth.strftime("%m-%d")
+                    if date_of_birth not in birthday_calendar:
+                        birthday_calendar[birthday_key] = []
+                    birthday_calendar[birthday_key].append(person.name)
+
+            # Sorting the calendar from day to month ignoring the year
+            sorted_calendar = dict(sorted(birthday_calendar.items()))
+
+            return sorted_calendar
+
     def get_spouse(self, people): #Mo
         if self.spouse:
             print("Spouse:",people[self.spouse].name)
@@ -35,7 +52,7 @@ class Person:
     def get_immediate_family(self, people):  # Mo
         # (Feature 1bi)
         self.get_parents(people)
-        #self.get_siblings(people) #TODO uncomment after Ashanti's code is merged
+        self.get_siblings(people)
         self.get_spouse(people)
         if isinstance(self, (Parent, Root)):
             self.add_descendants(people)
@@ -43,7 +60,6 @@ class Person:
             self.get_children(people)
         else:
             print("No children found.")
-
 
     def get_parents(self, people):  # Mo
         # (Feature 1ai) - prints the name and returns the UIDs, Polymorphism for the Root class returns none and does nothing
@@ -56,21 +72,93 @@ class Person:
         return f"Mother UID: {self.mother} \nFather UID: {self.father}"
 
     def get_siblings(self, people):
-        # (Feature 2ai)
-        # Note from Mo, please include code to print the name of each sibling like how I have done get parents and get spouse
-        pass
+            siblings = []
 
-    def get_cousins(self):
-        # (Feature 2aii)
-        pass
+            #used to check if the person has parents
+            if self.mother.uid is None and self.father.uid is None:
+                print("The person you selected has no siblings.")
+                return siblings
+
+            # Loop through all people to find siblings
+            for uid, index in people.items():
+                #Skips the person and prints their siblings
+                if index.uid == self.uid:
+                    continue
+
+                #Checks to see if atleast one parent is common between the person selected
+                if ((self.mother == index.mother) or
+                        (self.father == index.father)):
+                    siblings.append(index.uid)
+                    # Print siblings if found
+                    if siblings:
+                        print("Siblings: ")
+                        for i, sibling_uid in enumerate(siblings, 1):
+                            print(f"{i}. {people[sibling_uid].name}")
+                    else:
+                        print("No siblings found.")
+
+                    return siblings
+
+    def get_cousins(self, people):
+        #Find out if the person has any parents
+
+        if self.mother is None or self.father is None:
+            print("The person you selected has no cousins.")
+            return []
+
+        #Search for the parents of the selected person
+        parents = [self.mother, self.father]
+        print(self.mother, self.father)
+        aunts_uncles = []
+
+        #Locate the siblings of the parents(such as aunts and uncles)
+        for parent in parents:
+            if parent != 'None':
+                for  parent_uid in people:
+                    parent_uid = people[parent_uid]
+                    print(parent_uid)
+                    siblings = parent.get_siblings[parent_uid]
+                    aunts_uncles.append(siblings)
+        print(aunts_uncles,"auvunvle")
+
+        #Search for the cousins and store them in a list
+        cousins = []
+        for aunts_uncles_uid in aunts_uncles:
+            for uid, person in people.items():
+                if (person.mother == aunts_uncles_uid or person.father == aunts_uncles) and person.uid !=self.uid:
+                    cousins.append(person.uid)
+
+                #Display the cousins to the user
+                if cousins:
+                    print("Their cousins are:")
+                    for i, cousin_uid in enumerate(cousins, 1):
+                        print(f"{i}. {people[cousin_uid].name}")
+                    else:
+                        print("No cousins found.")
+
+                    return cousins
 
     def get_all_birthdays(self):
         # (Feature 2bi)
-        pass
+        if self.date_of_birth:
+            return self.date_of_birth
+        return "Birthday information not available"
 
-    def print_birthday_calendar(self):
+    def print_birthday_calendar(self, people, birthday_key):
         # (Feature 2bii)
-        pass
+            birthday_calendar = {} # stores birthday calendar in a list to be searched through
+
+            for person in people.values():
+                date_of_birth = person.print_person_birthday()
+                if date_of_birth:
+                    birth_date_key = date_of_birth.strftime("%m-%d")
+                    if birth_date_key not in birthday_calendar:
+                        birthday_calendar[birth_date_key] = []
+                    birthday_calendar[birth_date_key].append(person.name)
+
+           #Sorting the calendar from day to month ignoring the year
+            sorted_calendar = dict(sorted(birthday_calendar.items()))
+            return sorted_calendar
 
 
 class Parent(Person):
@@ -135,11 +223,10 @@ class Root(Parent):
         self.children = children if children else None  # A list of children for the Root
         self.grandchildren = grandchildren if grandchildren else None  # A list of grandchildren for the Root
 
-class FamilyTree:
-    def display_family_tree(self):
-        # (Feature 3ai)
-        pass
 
+    def print_birthday_calendar(self):
+        # (Feature 2bii)
+        pass
 
 
 
