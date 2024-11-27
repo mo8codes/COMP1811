@@ -1,5 +1,6 @@
 import time
 from classes import *
+import time
 
 def start_menu(people):
     print("****************************************************************************************************")
@@ -32,21 +33,16 @@ def start_menu(people):
             print("Displaying a list of all the people in the family tree....||")
             print("************************************************************")
             list_people(people)
-        case "I":
-            print("Feature I: Select an individual and return and display their parents (if any).")
-            list_people(people)
-            who = get_who("Select a number from the list to display a person's parents: ")
+        # case "I":
+        #     print("Feature I: Select an individual and return and display their parents (if any).")
+        #     list_people(people)
+        #     try:
+        #         who = input("Select a number from the list to display a person's parents: ")
+        #         people[who].get_cousins(people)
+        #     except ValueError:
+        #         print("Invalid input. Please enter a valid number.")
+        #    except KeyError:
 
-            try:
-                # Ensure the UID exists in the people dictionary
-                print(people[who].get_parents(people))
-                time.sleep(2.5)
-                start_menu(people)
-
-            except ValueError:
-                print("Invalid input. Please enter a valid number.")
-            except KeyError:
-                print("No person found with that ID.")
 
         case "II":
             print("Feature II: Select an individual and return and display their grandchildren (if any).")
@@ -75,7 +71,7 @@ def start_menu(people):
             print("Feature II: Select an individual to return and display their siblings (if any).")
             list_people(people)
             who = get_who("Which person's siblings would you like to know? Pick a number: ")
-            if isinstance(people[who], (Parent)):
+            if isinstance(people[who], (Person , Root)):
                 if people[who]:
                     people[who].get_siblings(people)
             else:
@@ -84,16 +80,31 @@ def start_menu(people):
         case "VI":
             print("Feature VI: Select an individual and return and display their cousins (if any).")
             list_people(people)
-            #who = input("Which person's cousins would you like to know? Pick a number: ")
-            # Add functionality to display cousins
+            who = get_who("Select an individual to display their cousins: (Pick a number:)")
+
+            try:
+                people[who].get_cousins(people)
+            except KeyError:
+                print("This person has no cousins")
+            finally:
+                time.sleep(2.5)
 
         case "VII":
             print("Feature VII: Displaying a list of birthdays of all family members.")
+            for uid, person in people.items():
+                if person.date_of_birth:
+                    print(f"{uid}. {person.name} ({person.date_of_birth.strftime('%d-%m-%Y')})")
+                else:
+                     print(f"{uid}. {person.name} (No birthday information available)")
 
 
-        case "VIII":
-            print("Feature VIII: Create a sorted birthday calendar.")
-            # Add functionality to create and display birthday calendar
+        # case "VIII":
+        #     print("Feature VIII: Create a sorted birthday calendar.")
+        #     calendar = print_birthday_calendar(people)
+        #     print("Displaying the Family Birthday Calendar:")
+        #     for date_of_birth, names, in calendar.items():
+        #         dates = datetime.strptime(date,"%m-%d").strftime("%B %d"))
+        #         print(f"{dates}: {', '.join(names)}")
 
         case "IX":
             print("Feature IX: Create an integrated program with both branches.")
